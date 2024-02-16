@@ -421,8 +421,8 @@ void JkBmsBle::decode_jk02_cell_info_(const std::vector<uint8_t> &data) {
   ESP_LOGD(TAG, "Wire resistance warning bitmask: 0x%02X 0x%02X 0x%02X 0x%02X", data[114 + offset], data[115 + offset],
            data[116 + offset], data[117 + offset]);
 
-  // 150   4   0x03 0xD0 0x00 0x00    Battery voltage       0.001        V
-  float total_voltage = (float) jk_get_32bit(150 + offset) * 0.001f;
+  // 118   4   0x03 0xD0 0x00 0x00    Battery voltage       0.001        V
+  float total_voltage = (float) jk_get_32bit(118 + offset) * 0.001f;
   this->publish_state_(this->total_voltage_sensor_, total_voltage);
 
   // 122   4   0x00 0x00 0x00 0x00    Battery power         0.001        W
@@ -559,13 +559,13 @@ void JkBmsBle::decode_jk02_cell_info_(const std::vector<uint8_t> &data) {
   //           0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
   //           0x00
 
-  // 224   1   0x01                   Heating status          0x00: off, 0x01: on
-  this->publish_state_(this->heating_binary_sensor_, (bool) data[224 + offset]);
-
-  // 236   2   0x01 0xFD              Heating current         0.001         A
-  this->publish_state_(this->heating_current_sensor_, (float) ((int16_t) jk_get_16bit(236 + offset)) * 0.001f);
-
   if (frame_version == FRAME_VERSION_JK02_32S) {
+    // 192   1   0x01                   Heating status          0x00: off, 0x01: on
+    this->publish_state_(this->heating_binary_sensor_, (bool) data[192 + offset]);
+
+    // 204   2   0x01 0xFD              Heating current         0.001         A
+    this->publish_state_(this->heating_current_sensor_, (float) ((int16_t) jk_get_16bit(204 + offset)) * 0.001f);
+
     uint16_t raw_emergency_time_countdown = jk_get_16bit(186 + offset);
     ESP_LOGI(TAG, "  Emergency switch: %s", (raw_emergency_time_countdown > 0) ? "on" : "off");
     this->publish_state_(this->emergency_switch_, raw_emergency_time_countdown > 0);
