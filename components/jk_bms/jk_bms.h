@@ -247,6 +247,8 @@ class JkBms : public PollingComponent, public jk_modbus::JkModbusDevice {
   void update() override;
 
  protected:
+  friend class jk::BmsToInverterJK;
+
   binary_sensor::BinarySensor *balancing_binary_sensor_;
   binary_sensor::BinarySensor *balancing_switch_binary_sensor_;
   binary_sensor::BinarySensor *charging_binary_sensor_;
