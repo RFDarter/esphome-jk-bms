@@ -8,6 +8,9 @@
 #include "esphome/components/jk_modbus/jk_modbus.h"
 
 namespace esphome {
+namespace jk {
+class BmsToInverterJK,
+}  // namespace jk
 namespace jk_bms {
 
 class JkBms : public PollingComponent, public jk_modbus::JkModbusDevice {
