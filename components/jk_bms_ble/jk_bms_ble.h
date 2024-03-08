@@ -15,6 +15,9 @@
 #include <esp_gattc_api.h>
 
 namespace esphome {
+namespace jkBle {
+class BmsToInverterJKBle;
+}  // namespace jkBle
 namespace jk_bms_ble {
 
 namespace espbt = esphome::esp32_ble_tracker;
