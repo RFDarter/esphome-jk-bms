@@ -15,9 +15,9 @@
 #include <esp_gattc_api.h>
 
 namespace esphome {
-namespace jkBle {
+namespace jk_ble {
 class BmsToInverterJKBle;
-}  // namespace jkBle
+}  // namespace jk_ble
 namespace jk_bms_ble {
 
 namespace espbt = esphome::esp32_ble_tracker;
@@ -206,7 +206,7 @@ class JkBmsBle : public esphome::ble_client::BLEClientNode, public PollingCompon
   } temperatures_[4];
 
  protected:
-  friend class esphome::jkBle::BmsToInverterJKBle;
+  friend class esphome::jk_ble::BmsToInverterJKBle;
   ProtocolVersion protocol_version_{PROTOCOL_VERSION_JK02_24S};
 
   binary_sensor::BinarySensor *balancing_binary_sensor_;
