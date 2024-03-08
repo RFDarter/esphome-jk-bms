@@ -9,7 +9,7 @@
 
 namespace esphome {
 namespace jk {
-class BmsToInverterJK,
+class BmsToInverterJK;
 }  // namespace jk
 namespace jk_bms {
 
