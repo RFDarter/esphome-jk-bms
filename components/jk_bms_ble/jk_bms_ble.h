@@ -206,7 +206,7 @@ class JkBmsBle : public esphome::ble_client::BLEClientNode, public PollingCompon
   } temperatures_[4];
 
  protected:
-  friend class esphome::jkble::BmsToInverterJKBle;
+  friend class esphome::jkBle::BmsToInverterJKBle;
   ProtocolVersion protocol_version_{PROTOCOL_VERSION_JK02_24S};
 
   binary_sensor::BinarySensor *balancing_binary_sensor_;
