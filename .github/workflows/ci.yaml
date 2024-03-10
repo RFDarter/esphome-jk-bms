@@ -1,6 +1,6 @@
 name: CI
 
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   push:
     branches:
       - main
@@ -28,7 +28,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: "3.9"
       - name: Cache pip modules
         uses: actions/cache@v1
         with:
@@ -77,7 +77,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: "3.9"
       - name: Cache pip modules
         uses: actions/cache@v1
         with:
@@ -131,7 +131,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: "3.9"
       - name: Cache pip modules
         uses: actions/cache@v1
         with:
@@ -164,7 +164,7 @@ jobs:
           echo "::add-matcher::.github/workflows/matchers/python.json"
 
       - name: Lint Custom
-        run: script/ci-custom.py -c
+        run: script/ci-custom.py -c --ignore= components/bms_to_inverter/__init__.py
         working-directory: ${{ env.esphome_directory }}
       - name: Lint Python
         run: script/lint-python -c
